@@ -246,7 +246,7 @@ namespace DelvCD.Config
 
             if (ImGui.TableSetColumnIndex(1))
             {
-                condition.TriggerDataSourceIndex = Math.Clamp(condition.TriggerDataSourceIndex, 0, _triggerOptions.Length - 1);
+                condition.TriggerDataSourceIndex = Math.Clamp(condition.TriggerDataSourceIndex, 0, Math.Max(_triggerOptions.Length - 1, 0)); //Math.Max ensures max is not less than min
 
                 ImGui.SetCursorPosY(ImGui.GetCursorPosY() + 1f * _scale);
                 ImGui.PushItemWidth(ImGui.GetColumnWidth());
@@ -256,7 +256,7 @@ namespace DelvCD.Config
 
             if (ImGui.TableSetColumnIndex(2))
             {
-                condition.Source = Math.Clamp(condition.Source, 0, _sourceOptions[condition.TriggerDataSourceIndex].Length - 1);
+                condition.Source = Math.Clamp(condition.Source, 0, Math.Max(_sourceOptions[condition.TriggerDataSourceIndex].Length - 1, 0));  //Math.Max ensures max is not less than min
 
                 ImGui.SetCursorPosY(ImGui.GetCursorPosY() + 1f * _scale);
                 ImGui.PushItemWidth(ImGui.GetColumnWidth());
